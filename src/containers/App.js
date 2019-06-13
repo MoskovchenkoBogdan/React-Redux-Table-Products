@@ -7,7 +7,7 @@ import Greetings from './Greetings'
 class App extends Component {
     render() {
         let getLocalStorage = localStorage.getItem('token');
-        const {products, auth} = this.props;
+        const {products} = this.props;
         console.log(products);
         return (
             <div className="container">
