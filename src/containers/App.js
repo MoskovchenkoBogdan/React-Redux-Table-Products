@@ -6,13 +6,13 @@ import Greetings from './Greetings'
 
 class App extends Component {
     render() {
-        console.log(this.props);
+        let getLocalStorage = localStorage.getItem('token');
         const {products, auth} = this.props;
         console.log(products);
         return (
             <div className="container">
                 {
-                    !auth.currentUser.id ? <Greetings /> : <ProductTable />
+                    !getLocalStorage ? <Greetings /> : <ProductTable />
                 }
             </div>
         );

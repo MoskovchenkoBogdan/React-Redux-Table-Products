@@ -6,7 +6,7 @@ export const deleteProduct = (user , auth) => {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization":"Bearer " + auth.currentUser.access_token,
+                "Authorization":"Bearer " + auth,
             },
             body: JSON.stringify(user)
         })

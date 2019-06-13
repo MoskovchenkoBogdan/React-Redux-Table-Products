@@ -63,3 +63,12 @@
 .ProductList {
     height: 40px;
 }
+
+.red {
+    background-color: red;
+}
+
+.red:hover {
+    opacity: .65;
+    cursor: pointer;
+}

@@ -1,8 +1,8 @@
-export const showChangeForm = (id) => {
+export const showChangeForm = (product) => {
     return dispatch => {
         dispatch({
             type: 'SHOW_GHANGE_FORM',
-            payload: id
+            payload: product
         })
     }
 }

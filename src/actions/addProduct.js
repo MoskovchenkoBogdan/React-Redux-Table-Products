@@ -13,7 +13,7 @@ export const userPostFetch = (user , auth) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization":"Bearer " + auth.currentUser.access_token,
+                "Authorization":"Bearer " + auth,
             },
             body: JSON.stringify(user)
         })

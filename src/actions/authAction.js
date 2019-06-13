@@ -22,4 +22,15 @@ export const userPostFetch = user => {
                 }
             })
     }
+};
+
+export const logOut = () => {
+    localStorage.removeItem("token");
+    console.log('token');
+    return dispatch => {
+        dispatch({
+            type: 'LOGOUT_USER',
+        })
+    }
 }
+

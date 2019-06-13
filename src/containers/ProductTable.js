@@ -7,27 +7,32 @@ import AddProductForm from './AddProductForm'
 import {productsFetchList} from '../actions/products'
 import {showForm} from "../actions/addProduct";
 import {showChangeForm} from "../actions/sendPropsToChangeForm";
-import {deleteProduct} from "../actions/deleteProduct"
+import {deleteProduct} from "../actions/deleteProduct";
+import { logOut } from "../actions/authAction"
 
 
 class ProductTable extends Component {
+
     componentDidMount() {
-        this.props.productsFetchList(this.props.auth);
+        this.props.productsFetchList(localStorage.getItem("token"));
     }
 
     render() {
-        const {products, auth} = this.props;
-
+        const {products} = this.props;
+        let getLocalStorage = localStorage.getItem("token");
 
         return (
             <div>
                 {
                     !products.showFormAddProduct ?
                         !products.showChangeProductForm ?
-                            <div >
+                            <div>
                                 <div className="ProductList">
                                     <button className="btn left" onClick={() => this.props.showForm()}>
                                         Add product
+                                    </button>
+                                    <button className="btn left red" onClick={() => this.props.logOut()}>
+                                        LOG OUT
                                     </button>
                                 </div>
 
@@ -42,7 +47,6 @@ class ProductTable extends Component {
                                     </thead>
 
                                     <tbody>
-
                                     {
                                         products.products ? products.products.map(product => (
 
@@ -53,13 +57,14 @@ class ProductTable extends Component {
                                                         <td>{product.price}
                                                             <button
                                                                 className="btn"
-                                                                onClick={() => this.props.showChangeForm(product.id)}>
+                                                                onClick={() => this.props.showChangeForm(product)}>
                                                                 ChangeProduct
                                                             </button>
                                                             <button
                                                                 className="btn"
-                                                                onClick={() => this.props.deleteProduct(product, auth)}>
-                                                                DeletePoduct
+                                                                onClick={() => this.props.deleteProduct(product,
+                                                                    getLocalStorage)}>
+                                                                DeleteProduct
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -98,7 +103,8 @@ const mapDispatchToProps = dispatch => ({
     productsFetchList: auth => dispatch(productsFetchList(auth)),
     showForm: () => dispatch(showForm()),
     deleteProduct: (product, auth) => dispatch(deleteProduct(product, auth)),
-    showChangeForm: (id) => dispatch(showChangeForm(id))
+    showChangeForm: (product) => dispatch(showChangeForm(product)),
+    logOut: () => dispatch(logOut())
 });
 
 

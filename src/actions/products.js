@@ -5,7 +5,7 @@
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
-                Authorization: "Bearer "+ user.currentUser.access_token
+                Authorization: "Bearer "+ user
             },
         })
             .then(resp => resp.json())

@@ -20,7 +20,7 @@ class AddProductForm extends Component  {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.userPostFetch(this.state, this.props.auth)
+        this.props.userPostFetch(this.state, localStorage.getItem("token"))
     }
 
     render() {

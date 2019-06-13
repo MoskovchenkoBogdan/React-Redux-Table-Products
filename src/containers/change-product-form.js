@@ -5,6 +5,16 @@ import './Greetings.css';
 import {changeProduct} from "../actions/changeProduct";
 
 class ChangeProductForm extends Component  {
+
+    componentDidMount() {
+        this.setState({
+            name: this.props.changeProductForm.name,
+            description: this.props.changeProductForm.description,
+            price: this.props.changeProductForm.price,
+        });
+    }
+
+
     state = {
         name: "",
         description: "",
@@ -20,10 +30,11 @@ class ChangeProductForm extends Component  {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.changeProduct(this.props.changeProductForm, this.state, this.props.auth)
+        this.props.changeProduct(this.props.changeProductForm.id, this.state, localStorage.getItem("token"))
     }
 
     render() {
+
         return (
             <form className="contact-form" action="" method="post" name="contact_form" onSubmit={this.handleSubmit}>
 
