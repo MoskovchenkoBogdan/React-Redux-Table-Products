@@ -32,7 +32,7 @@ class ProductTable extends Component {
                                         Add product
                                     </button>
                                     <button className="btn left red" onClick={() => this.props.logOut()}>
-                                        LOG OUT
+                                        Log Out
                                     </button>
                                 </div>
 
